@@ -1,0 +1,49 @@
+name: widgetbook_workspace
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  todolist:
+    path: ..
+  flutter:
+    sdk: flutter
+  widgetbook: ^3.16.0
+  widgetbook_annotation: ^3.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  widgetbook_generator: ^3.15.0
+  build_runner: ^2.6.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/prioritylogo.png
+    - assets/images/startpage_image.png
+    - assets/images/surveypage_image.png
+    - assets/images/survey_end_image.png
+
+  fonts:
+    - family: Gambarino
+      fonts:
+        - asset: fonts/Gambarino-Regular.ttf
+          weight: 400
+        - asset: fonts/Gambarino-Regular.ttf
+          weight: 600
+        - asset: fonts/Gambarino-Regular.ttf
+          weight: 700
+    
+    - family: Switzer Variable
+      fonts:
+        - asset: fonts/Switzer-Variable.ttf
+          weight: 400 
+        - asset: fonts/Switzer-VariableItalic.ttf
+          style: italic
+ 

@@ -39,7 +39,10 @@ class App extends StatelessWidget {
               // Allow assets like /start, /signup without loops
               final loggingIn =
                   state.matchedLocation.startsWith('/start') ||
-                  state.matchedLocation.startsWith('/signup');
+                  state.matchedLocation.startsWith('/signup') ||
+                  state.matchedLocation.startsWith('/enter-name') ||
+                  state.matchedLocation.startsWith('/survey') ||
+                  state.matchedLocation.startsWith('/home');
 
               if (!signedIn && !loggingIn) return '/start';
               if (signedIn &&

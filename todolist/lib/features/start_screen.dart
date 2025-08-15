@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../design_system/components/button.dart';
-import 'auth_screen.dart';
+import 'package:go_router/go_router.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -47,12 +47,7 @@ class _StartScreenState extends State<StartScreen> {
                 child: DsButton(
                   label: 'Continue',
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const AuthScreen(),
-                      ),
-                    );
+                    context.go('/signup');
                   },
                   variant: DsButtonVariant.neutral,
                 ),

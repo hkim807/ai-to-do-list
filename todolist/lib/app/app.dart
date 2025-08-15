@@ -69,7 +69,7 @@ class App extends StatelessWidget {
               ),
               GoRoute(
                 path: '/enter-name',
-                builder: (_, __) => const EnterName(),
+                builder: (_, __) => const NameEntryScreen(),
               ),
               GoRoute(
                 path: '/survey/intro',

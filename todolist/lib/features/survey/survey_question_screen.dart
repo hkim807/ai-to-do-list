@@ -22,7 +22,7 @@ class SurveyQuestionScreen extends StatefulWidget {
 
   // Nice helper for go_router:
   static SurveyQuestionScreen fromArgs(SurveyArgs a) =>
-      SurveyQuestionScreen(controller: a.controller, index: a.index);
+      SurveyQuestionScreen(controller: a.controller as SurveyController, index: a.index);
 
   @override
   State<SurveyQuestionScreen> createState() => _SurveyQuestionScreenState();

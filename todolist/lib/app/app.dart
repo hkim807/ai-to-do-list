@@ -38,10 +38,10 @@ class App extends StatelessWidget {
         builder: (context) {
           final appState = context.watch<AppState>();
           final surveyController = context.read<SurveyController>();
-          
+
           final router = GoRouter(
             debugLogDiagnostics: true,
-            initialLocation: '/home',
+            initialLocation: '/start',
             refreshListenable: appState,
             redirect: (ctx, state) {
               final signedIn = appState.auth == AuthStatus.signedIn;

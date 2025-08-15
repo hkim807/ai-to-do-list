@@ -10,6 +10,7 @@ class DsTextField extends StatelessWidget {
     this.errorText,
     this.controller,
     this.keyboardType = TextInputType.text,
+    this.obscureText = false,
   });
 
   final String label;
@@ -18,6 +19,7 @@ class DsTextField extends StatelessWidget {
   final String? errorText;
   final TextEditingController? controller;
   final TextInputType keyboardType;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,9 @@ class DsTextField extends StatelessWidget {
     final outlineColor = errorText != null ? cs.error : cs.outline;
 
     OutlineInputBorder outline(Color color) => OutlineInputBorder(
-          borderRadius: borderRadius,
-          borderSide: BorderSide(color: color),
-        );
+      borderRadius: borderRadius,
+      borderSide: BorderSide(color: color),
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,11 +47,15 @@ class DsTextField extends StatelessWidget {
           controller: controller,
           enabled: enabled,
           keyboardType: keyboardType,
+          obscureText: obscureText,
           decoration: InputDecoration(
             hintText: placeholder,
             filled: true,
             fillColor: theme.inputDecorationTheme.fillColor ?? cs.surface,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 18,
+            ),
             border: outline(outlineColor),
             enabledBorder: outline(outlineColor),
             disabledBorder: outline(cs.outline.withOpacity(0.6)),
@@ -63,5 +69,3 @@ class DsTextField extends StatelessWidget {
     );
   }
 }
-
-

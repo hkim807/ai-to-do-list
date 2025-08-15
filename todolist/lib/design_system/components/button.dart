@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todolist/design_system/tokens/spacing.dart';
 
 enum DsButtonVariant { neutral, subtle }
 
@@ -39,13 +40,11 @@ class _DsButtonState extends State<DsButton> {
       switch (v) {
         case DsButtonVariant.neutral:
           Color getBackgroundColor() {
-            if (!widget.enabled) return cs.surfaceVariant;
+            if (!widget.enabled) return cs.surface;
             if (_isHovered) {
-              return isDark
-                  ? cs.surfaceVariant
-                  : cs.surfaceVariant.withOpacity(0.8);
+              return isDark ? cs.surface : cs.surface.withOpacity(0.8);
             }
-            return isDark ? cs.surface : Colors.white;
+            return isDark ? cs.surface : cs.surface;
           }
 
           final base = OutlinedButton.styleFrom(
@@ -53,7 +52,10 @@ class _DsButtonState extends State<DsButton> {
                 ? cs.onSurface
                 : cs.onSurface.withOpacity(0.38),
             minimumSize: const Size(0, 52),
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24,
+              vertical: SpacingTokens.space300,
+            ),
             shape: shape,
             backgroundColor: getBackgroundColor(),
             side: BorderSide(
@@ -78,7 +80,9 @@ class _DsButtonState extends State<DsButton> {
                 ? cs.onSurface
                 : cs.onSurface.withOpacity(0.38),
             minimumSize: const Size(0, 52),
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(
+              horizontal: SpacingTokens.space300,
+            ),
             shape: shape,
             backgroundColor: getBackgroundColor(),
           );

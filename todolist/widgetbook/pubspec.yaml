@@ -23,4 +23,27 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
+  assets:
+    - assets/images/prioritylogo.png
+    - assets/images/startpage_image.png
+    - assets/images/surveypage_image.png
+    - assets/images/survey_end_image.png
+
+  fonts:
+    - family: Gambarino
+      fonts:
+        - asset: fonts/Gambarino-Regular.ttf
+          weight: 400
+        - asset: fonts/Gambarino-Regular.ttf
+          weight: 600
+        - asset: fonts/Gambarino-Regular.ttf
+          weight: 700
+    
+    - family: Switzer Variable
+      fonts:
+        - asset: fonts/Switzer-Variable.ttf
+          weight: 400 
+        - asset: fonts/Switzer-VariableItalic.ttf
+          style: italic
  

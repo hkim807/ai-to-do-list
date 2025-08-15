@@ -16,10 +16,13 @@ class WidgetbookApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Widgetbook.material(
       addons: [
-        MaterialThemeAddon(themes: [
-          WidgetbookTheme(name: 'Light', data: buildLightTheme()),
-          WidgetbookTheme(name: 'Dark', data: buildDarkTheme()),
-        ]),
+        MaterialThemeAddon(
+          themes: [
+            WidgetbookTheme(name: 'Light', data: buildLightTheme()),
+            WidgetbookTheme(name: 'Dark', data: buildDarkTheme()),
+          ],
+          initialTheme: WidgetbookTheme(name: 'Light', data: buildLightTheme()),
+        ),
         DeviceFrameAddon(devices: Devices.all),
         TextScaleAddon(scales: [1.0, 1.2, 1.5, 2.0]),
         AlignmentAddon(),

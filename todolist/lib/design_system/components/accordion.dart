@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'task_item.dart';
+import 'package:todolist/design_system/tokens/spacing.dart';
+import 'package:todolist/design_system/tokens/typography_tokens.dart';
 
 class DsAccordionSection extends StatefulWidget {
   const DsAccordionSection({
@@ -69,8 +71,8 @@ class _DsAccordionSectionState extends State<DsAccordionSection>
     return Container(
       decoration: BoxDecoration(
         color: cs.surface,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: cs.outline.withOpacity(0.5)),
+        // borderRadius: BorderRadius.circular(12),
+        // border: Border.all(color: cs.outline.withOpacity(0.5)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -97,9 +99,7 @@ class _DsAccordionSectionState extends State<DsAccordionSection>
                       children: [
                         Text(
                           widget.title,
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            color: cs.onSurface,
-                          ),
+                          style: TypographyTokens.headingS(cs.onSurface),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -107,9 +107,7 @@ class _DsAccordionSectionState extends State<DsAccordionSection>
                           const SizedBox(height: 2),
                           Text(
                             widget.subtitle!,
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: cs.onSurfaceVariant,
-                            ),
+                            style: TypographyTokens.subtitle(cs.onSurface),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),

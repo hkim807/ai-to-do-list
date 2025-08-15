@@ -15,23 +15,34 @@ import '../features/survey/survey_done_page.dart';
 import '../features/home/home_shell.dart';
 import '../design_system/theme/app_theme.dart';
 import '../features/survey/survey_controller.dart';
+import '../features/tasks/task_store.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => AppState(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppState()),
+        ChangeNotifierProvider<TaskStore>(
+          create: (_) {
+            final s = TaskStore();
+            s.load();
+            return s;
+          },
+        ),
+        Provider<SurveyController>(create: (_) => SurveyController()),
+      ],
       child: Builder(
         builder: (context) {
           final appState = context.watch<AppState>();
-          final surveyController = SurveyController();
+          final surveyController = context.read<SurveyController>();
+          
           final router = GoRouter(
             debugLogDiagnostics: true,
-            initialLocation: '/start',
-            refreshListenable:
-                appState, // re‑evaluate redirects on state change
+            initialLocation: '/home',
+            refreshListenable: appState,
             redirect: (ctx, state) {
               final signedIn = appState.auth == AuthStatus.signedIn;
               final onboarding = appState.onboarding;
@@ -41,24 +52,24 @@ class App extends StatelessWidget {
                   state.matchedLocation.startsWith('/start') ||
                   state.matchedLocation.startsWith('/signup');
 
-              if (!signedIn && !loggingIn) return '/start';
-              if (signedIn &&
-                  onboarding == OnboardingStatus.inProgress &&
-                  !state.matchedLocation.startsWith('/survey')) {
-                return '/survey/intro';
-              }
-              if (signedIn &&
-                  onboarding == OnboardingStatus.notStarted &&
-                  !state.matchedLocation.startsWith('/survey')) {
-                return '/survey/intro';
-              }
-              if (signedIn &&
-                  onboarding == OnboardingStatus.complete &&
-                  (state.matchedLocation.startsWith('/start') ||
-                      state.matchedLocation.startsWith('/signup') ||
-                      state.matchedLocation.startsWith('/survey'))) {
-                return '/home';
-              }
+              // if (!signedIn && !loggingIn) return '/start';
+              // if (signedIn &&
+              //     onboarding == OnboardingStatus.inProgress &&
+              //     !state.matchedLocation.startsWith('/survey')) {
+              //   return '/survey/intro';
+              // }
+              // if (signedIn &&
+              //     onboarding == OnboardingStatus.notStarted &&
+              //     !state.matchedLocation.startsWith('/survey')) {
+              //   return '/survey/intro';
+              // }
+              // if (signedIn &&
+              //     onboarding == OnboardingStatus.complete &&
+              //     (state.matchedLocation.startsWith('/start') ||
+              //         state.matchedLocation.startsWith('/signup') ||
+              //         state.matchedLocation.startsWith('/survey'))) {
+              //   return '/home';
+              // }
               return null;
             },
             routes: [

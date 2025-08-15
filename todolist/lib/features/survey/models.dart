@@ -14,7 +14,7 @@ class SurveyQuestion {
 }
 
 class SurveyArgs {
-  final SurveyController controller;
+  final Object controller;
   final int index;
   const SurveyArgs({required this.controller, required this.index});
 }

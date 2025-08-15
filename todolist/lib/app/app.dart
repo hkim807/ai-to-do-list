@@ -38,10 +38,10 @@ class App extends StatelessWidget {
         builder: (context) {
           final appState = context.watch<AppState>();
           final surveyController = context.read<SurveyController>();
-          
+
           final router = GoRouter(
             debugLogDiagnostics: true,
-            initialLocation: '/home',
+            initialLocation: '/start',
             refreshListenable: appState,
             redirect: (ctx, state) {
               final signedIn = appState.auth == AuthStatus.signedIn;
@@ -50,7 +50,10 @@ class App extends StatelessWidget {
               // Allow assets like /start, /signup without loops
               final loggingIn =
                   state.matchedLocation.startsWith('/start') ||
-                  state.matchedLocation.startsWith('/signup');
+                  state.matchedLocation.startsWith('/signup') ||
+                  state.matchedLocation.startsWith('/enter-name') ||
+                  state.matchedLocation.startsWith('/survey') ||
+                  state.matchedLocation.startsWith('/home');
 
               // if (!signedIn && !loggingIn) return '/start';
               // if (signedIn &&

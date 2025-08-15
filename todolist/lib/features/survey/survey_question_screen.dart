@@ -1,6 +1,7 @@
 // lib/features/survey/survey_question_screen.dart
 import 'package:flutter/material.dart';
 import '../../design_system/components/button.dart';
+import 'package:go_router/go_router.dart';
 import '../../design_system/components/choice_chip.dart';
 import '../../design_system/components/progress_bar.dart';
 import '../../design_system/components/primary_button.dart';
@@ -21,8 +22,10 @@ class SurveyQuestionScreen extends StatefulWidget {
   final int index;
 
   // Nice helper for go_router:
-  static SurveyQuestionScreen fromArgs(SurveyArgs a) =>
-      SurveyQuestionScreen(controller: a.controller as SurveyController, index: a.index);
+  static SurveyQuestionScreen fromArgs(SurveyArgs a) => SurveyQuestionScreen(
+    controller: a.controller as SurveyController,
+    index: a.index,
+  );
 
   @override
   State<SurveyQuestionScreen> createState() => _SurveyQuestionScreenState();
@@ -136,21 +139,13 @@ class _SurveyQuestionScreenState extends State<SurveyQuestionScreen> {
     final next = widget.index + 1;
     if (next < widget.controller.questions.length) {
       // go_router:
-      // context.push('/survey/q', extra: SurveyArgs(controller: widget.controller, index: next));
-
-      // Navigator:
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (_) =>
-              SurveyQuestionScreen(controller: widget.controller, index: next),
-        ),
+      context.push(
+        '/survey/q/$next',
+        extra: SurveyArgs(controller: widget.controller, index: next),
       );
     } else {
       // go_router:
-      // context.go('/survey/done');
-
-      // Navigator:
-      Navigator.of(context).pushReplacementNamed('/survey/done');
+      context.go('/survey/done');
     }
   }
 }

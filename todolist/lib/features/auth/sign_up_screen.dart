@@ -45,7 +45,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             children: [
               IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => Navigator.maybePop(context),
+                onPressed: () {
+                  context.go('/start');
+                },
               ),
               // App bar minimal
               const SizedBox(height: 24),

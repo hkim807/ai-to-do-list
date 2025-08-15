@@ -39,7 +39,9 @@ class _NameEntryScreenState extends State<NameEntryScreen> {
             children: [
               IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () => Navigator.maybePop(context),
+                onPressed: () {
+                  context.go('/signup');
+                },
               ),
               // App bar minimal
               const SizedBox(height: 24),
